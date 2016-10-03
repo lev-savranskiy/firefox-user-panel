@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<overlay id="tbutton" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:xbl="http://www.mozilla.org/xbl">
+
+ <script type="application/x-javascript" src="upanel.js"/>
+
+ <script language="JavaScript">
+   //Window Event Handers
+   try{window.addEventListener("load", upanel_loadPrefs, true);}catch(e){}
+ </script>
+
+ <toolbox id="navigator-toolbox">
+   <toolbar id="qualifiers-toolbar"
+     customizable="true" 
+     iconsize="small" 
+     mode="full"
+     collapsed="false" persist="collapsed"
+     toolbarname="Redaril User Panel"
+     class="chromeclass-toolbar">
+     <rows>
+     <row id="raw-mode2" minwidth="1280">               
+       <image style="padding: 2px;" src="chrome://upanel/content/icons/bigbutton.png" width="110" />
+       
+       <textbox id="qualifiers-ic-field" value="" hidden="false" readonly="true" minwidth="510" multiline="true" rows="1" context="ic-menu"/>
+       <popup id="ic-menu">
+         <menuitem label="Accept result of interest classifier" oncommand="upanel_accept('IC');event.stopPropagation()"/>
+         <menuitem label="Reject result of interest classifier" oncommand="upanel_reject('IC');event.stopPropagation()"/>
+         <menuitem label="Reject with comment" oncommand="upanel_rejectComment('GC');event.stopPropagation()"/>
+       </popup>
+       <progressmeter id="qualifiers-ic-meter" mode="undetermined" hidden="true" minwidth="510"/>
+       <groupbox orient="horizontal" style="padding: 1px;background-color: yellow;" align="center">
+         <toolbarbutton id="qualifiers-ic-button" label="Qualify " align="center" mode="full" oncommand="produce('IC')"/>
+       </groupbox>
+       <textbox id="qualifiers-tc-field" value="" hidden="false" readonly="true" multiline="true" minwidth="510" rows="1" context="tc-cmenu"/>
+       <popup id="tc-cmenu">
+         <menuitem label="Accept result of classification" oncommand="upanel_accept('TC');event.stopPropagation()"/>
+         <menuitem label="Reject result of classification" oncommand="upanel_reject('TC');event.stopPropagation()"/>
+         <menuitem label="Reject with comment" oncommand="upanel_rejectComment('TC');event.stopPropagation()"/>
+       </popup>
+
+       <progressmeter id="qualifiers-tc-meter" mode="undetermined" hidden="true" minwidth="510"/>
+       <groupbox orient="horizontal" style="padding: 1px;background-color: orange;" align="center">
+         <toolbarbutton id="qualifiers-tc-button" label="Classify" align="center" mode="full" oncommand="produce('TC')"/>
+       </groupbox>
+       <!-- 
+       <groupbox orient="horizontal" style="padding: 1px;background-color: lightgreen;" align="center">
+         <toolbarbutton id="qualifiers-goog-button" label="Googlify" align="center" mode="full" oncommand="produce('GO')"/>
+       </groupbox>
+       <textbox id="qualifiers-goog-field" value="" hidden="false" readonly="true" flex="2" multiline="true" rows="1" context="google-menu"/>
+       <popup id="google-menu">
+         <menuitem label="Accept result of google ad classifier" oncommand="upanel_accept('GC');event.stopPropagation()"/>
+         <menuitem label="Reject result of google ad classifier" oncommand="upanel_reject('GC');event.stopPropagation()"/>
+         <menuitem label="Reject with comment" oncommand="upanel_rejectComment('GC');event.stopPropagation()"/>
+       </popup>
+       <progressmeter id="qualifiers-goog-meter" mode="undetermined" hidden="true" flex="2"/>
+       <groupbox orient="horizontal" style="padding: 1px;background-color: white;" align="center">
+         <toolbarbutton id="qualifiers-sd-button" type="menu-button" label="SDlify" align="center" mode="full" oncommand="produce('SD')">
+           <menupopup id="sd-popup">
+             <menuitem label="Get Raw Category" oncommand="getRawCategory()"/>
+           </menupopup>
+         </toolbarbutton>
+       </groupbox>
+       <textbox id="qualifiers-sd-field" value="" hidden="false" readonly="true" flex="2" multiline="true" rows="1" context="sd-menu"/>
+       <popup id="sd-menu">
+         <menuitem label="Accept result of site-drivers" oncommand="upanel_accept('SD');event.stopPropagation()"/>
+         <menuitem label="Reject result of site-drivers" oncommand="upanel_reject('SD');event.stopPropagation()"/>
+         <menuitem label="Reject with comment" oncommand="upanel_rejectComment('SD');event.stopPropagation()"/>
+       </popup>
+       <progressmeter id="qualifiers-sd-meter" mode="undetermined" hidden="true" flex="2"/>           
+       -->
+     </row>
+     <row id="raw-mode4" minwidth="1280">
+		<!-- 
+       <groupbox id="qualifiers-dc-field" orient="horizontal" style="background-color: lightgrey;" align="center" minwidth="570" context="dc-menu">
+         <label id="qualifiers-demolabel" value=""/>
+       </groupbox>
+       <popup id="dc-menu">
+         <menuitem label="Accept result of demo classifier" oncommand="upanel_accept('DC');event.stopPropagation()"/>
+         <menuitem label="Reject result of demo classifier" oncommand="upanel_reject('DC');event.stopPropagation()"/>
+         <menuitem label="Reject with comment" oncommand="upanel_rejectComment('DC');event.stopPropagation()"/>
+       </popup>
+
+       <progressmeter id="qualifiers-dc-meter" mode="undetermined" hidden="true" minwidth="570"/>
+       <groupbox id="qualifiers-dcpanel" orient="horizontal" style="padding: 1px;background-color: cyan;" align="center">
+         <toolbarbutton id="qualifiers-dc-button" label="Gender" align="center" mode="full" oncommand="produce('DC')"/>
+       </groupbox>
+	-->
+       <groupbox orient="horizontal" style="padding: 1px;background-color: red;" align="center">
+         <toolbarbutton id="qualifiers-all-button" label="Mega Classify" align="center" mode="full" oncommand="megaclassify()"/>
+       </groupbox>
+       <groupbox id="qbuilder-menubutton" orient="horizontal" style="padding: 1px;background-color: lightgrey;" align="center">
+         <toolbarbutton label="Find Display Ads" align="center" mode="full" oncommand="produce('NB')"/>
+       </groupbox>
+       <groupbox orient="horizontal" style="padding: 1px;background-color: pink;" align="center">
+         <toolbarbutton id="qualifiers-showum" type="menu-button" label="Get Model" align="center" mode="full" oncommand="userModeler()">
+           <menupopup id="model-popup">
+             <menuitem label="Reset Profile" oncommand="userModelerReset()"/>
+           </menupopup>
+         </toolbarbutton>
+       </groupbox>
+       <groupbox orient="horizontal" style="padding: 1px;" align="center">
+         <toolbarbutton id="qualifiers-settings" label="" align="center" mode="full" image="chrome://upanel/content/icons/options.png" oncommand="upanel_openSettings()"/>
+       </groupbox>
+       <checkbox id="qsettings-auto" label="Auto Classify" oncommand="setAutoProc()"/>
+       <checkbox id="qsettings-track" label="Track" oncommand="setTrack()"/>
+       <checkbox id="qsettings-um" label="Model" oncommand="setUMShow()"/>
+       <!--
+       <checkbox id="qsettings-setproxy" label="C-Proxy" oncommand="setCerterProxy()"/>
+       <checkbox id="qsettings-saveclicks" label="Save Clicks" oncommand="setSaveClicks()"/>
+        -->
+     </row>
+     <row id="raw-mode5" minwidth="1280">               
+       <progressmeter id="qualifiers-business-meter" mode="undetermined" hidden="true" flex="2"/>
+       <textbox readonly="true" multiline="true" id="qualifiers-business-text" value="" flex="2" rows="4"/>
+     </row>
+     <row id="user-modeling" minwidth="1280" hidden="true">               
+       <textbox id="qualifiers-um-field" value="" hidden="false" readonly="true" multiline="true" rows="3" flex="6"/>
+       <textbox id="qualifiers-cat-field" value="" hidden="false" readonly="true" multiline="true" rows="3" flex="1"/>
+     </row>
+     </rows>
+   </toolbar>
+ </toolbox>
+</overlay>

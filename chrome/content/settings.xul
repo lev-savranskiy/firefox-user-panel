@@ -1,0 +1,112 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?> 
+
+<dialog id="commonDialog"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+        xmlns:xhtml2="http://www.w3.org/TR/xhtml2"
+        xmlns:wairole="http://www.w3.org/2005/01/wai-rdf/GUIRoleTaxonomy#"
+        xhtml2:role="wairole:alert"
+        onload="upanel_dialogOnLoad(this);"
+        ondialogaccept="upanel_dialogOnAccept();"
+	ondialogcancel="upanel_dialogOnCancel();"
+        buttonpack="center"
+        title="Redaril User Panel Settings">
+
+  <script type="application/x-javascript" src="chrome://upanel/content/settings.js"/>
+      <rows align="end">
+        <row>
+          <hbox align="center">
+            <label value="User Name:" style="font-weight: bold;"/>
+            <textbox id="qsettings-uname" size="10"/>
+          </hbox>
+        </row>
+        <row>
+          <hbox align="center">
+            <label value="Service IP:" style="font-weight: bold;"/>
+            <textbox id="qsettings-serviceip" size="40"/>
+          </hbox>
+        </row>
+        <row>
+          <hbox align="center">
+            <label value="Service Port:" style="font-weight: bold;"/>
+            <textbox id="qsettings-serviceport" size="5"/>
+          </hbox>
+        </row>
+        <row>
+          <hbox align="center">
+            <label value="Specific TC IP:" style="font-weight: bold;"/>
+            <textbox id="qsettings-stcip" size="40"/>
+          </hbox>
+        </row>
+        <row>
+          <checkbox id="qsettings-stc" label="Specific TC" oncommand="checkSpecificSettings()"/>
+          <hbox align="center">
+            <label value="Specific TC Port:" style="font-weight: bold;"/>
+            <textbox id="qsettings-stcport" size="5"/>
+          </hbox>
+        </row>
+        <!--
+        <row>
+          <hbox align="center">
+            <label value="Specific DC IP:" style="font-weight: bold;"/>
+            <textbox id="qsettings-sdcip" size="40"/>
+          </hbox>
+        </row>
+        <row>
+          <checkbox id="qsettings-sdc" label="Specific DC" oncommand="checkSpecificSettings()"/>
+          <hbox align="center">
+            <label value="Specific DC Port:" style="font-weight: bold;"/>
+            <textbox id="qsettings-sdcport" size="5"/>
+          </hbox>
+        </row>
+        <row>
+          <hbox align="center">
+            <label value="Certer Proxy IP:" style="font-weight: bold;"/>
+            <textbox id="qsettings-proxyip" size="40"/>
+          </hbox>
+        </row>
+        <row>
+          <hbox align="center">
+            <label value="Certer Proxy Port:" style="font-weight: bold;"/>
+            <textbox id="qsettings-proxyport" size="5"/>
+          </hbox>
+        </row>
+        <row>
+          <hbox align="center">
+            <label value="Save Clicks To:" style="font-weight: bold;"/>
+            <textbox id="qsettings-saveclickspath" size="40"/>
+          </hbox>
+        </row>
+        -->
+        <row>
+          <hbox align="center">
+            <label value="User Real IP:" style="font-weight: bold;"/>
+            <textbox id="qsettings-userip" size="40"/>
+          </hbox>
+        </row>
+        <!--
+        <row>
+            <checkbox id="qsettings-mode2" label="Classifier Toolbar" oncommand="upanel_check(this,2);"/>
+        </row>
+        <row>
+            <checkbox id="qsettings-mode3" label="Qualifiers and SD Toolbar" oncommand="upanel_check(this,3);"/>
+        </row>
+        <row>
+            <checkbox id="qsettings-mode4" label="Demo Classifier Toolbar" oncommand="upanel_check(this,4);"/>
+        </row>
+        -->
+        <row>
+            <checkbox id="qsettings-framew" label="Frameset Warnings"/>
+        </row>
+        <!--
+        <row>
+          <label value="Demographics threshold: "/>
+          <textbox id="qsettings-demotr" size="5"/>
+        </row>
+         -->
+        <row>
+          <checkbox id="qsettings-research" label="Research Mode"/>
+        </row>
+
+      </rows>
+</dialog>

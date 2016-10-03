@@ -1,0 +1,29 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?> 
+
+<dialog id="commonDialog"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+        xmlns:xhtml2="http://www.w3.org/TR/xhtml2"
+        xmlns:wairole="http://www.w3.org/2005/01/wai-rdf/GUIRoleTaxonomy#"
+        xhtml2:role="wairole:alert"
+        onload="upanel_framesDialogOnLoad(this);"
+        ondialogaccept="upanel_framesDialogOnAccept();"
+	ondialogcancel="upanel_framesDialogOnCancel();"
+        buttonpack="center"
+        title="Frameset Detected">
+
+  <script type="application/x-javascript" src="chrome://upanel/content/frames.js"/>
+      <rows align="center">
+        <row>
+          <hbox align="center">
+            <label value="Please choose what to classify:" style="font-weight: bold;"/>
+          </hbox>
+        </row>
+      </rows>
+      <row>
+         <menulist id="qbuilder-frames" sizetopopup="false" flex="1">
+           <menupopup id="qbuilder-frames-popup">
+           </menupopup>
+         </menulist>
+      </row>
+</dialog>
